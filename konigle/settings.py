@@ -168,14 +168,6 @@ REST_FRAMEWORK = {
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
 CELERY_BEAT_SCHEDULE = {
-    # demo every 30s
-    "send-mail-analysis-every-30s": {
-        "task": "unity__send_analysis_email_task",
-        "schedule": 30.0,
-        "options": {
-            "expires": 15.0,
-        },
-    },
     # Executes every Monday and Wednesday morning at 00:00 AM
     "send-mail-analysis-every-monday": {
         "task": "unity__send_analysis_email_task",
