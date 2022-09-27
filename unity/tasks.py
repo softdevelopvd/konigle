@@ -14,12 +14,12 @@ from unity.constants.visitor_emails import (
 
 logger = logging.getLogger(__name__)
 
+
 @shared_task(name="unity__send_analysis_email_task")
 def send_analysis_email_task():
     """Sends an email to the seller every Monday and Wednesday including the statistics around the email list."""
     sellers = Seller.objects.filter(
         Q(user__is_active=True),
-        Q(is_email_sent=VisitorEmailIsSentType.UNSENT),
         ~Q(is_email_sent=VisitorEmailIsSentType.SENDING),
     )
 
