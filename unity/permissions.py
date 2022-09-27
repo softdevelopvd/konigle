@@ -1,0 +1,12 @@
+from rest_framework.permissions import BasePermission
+
+
+# Custom permission for users in token is exists.
+class IsTokenValid(BasePermission):
+    """
+    Allows access only to user in token is exists.
+    """
+    message = {'message': 'Token is invalid or expired.'}
+    
+    def has_permission(self, request, view):
+        return request.user
